@@ -1,18 +1,15 @@
-# digital-electronics-1
-
+# Digitální elektronika 1
+Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem
 
 # H1
 ## H2
 ### H3
 #### H4
 ##### H5
-###### H6
-
-Alt-H1
+Alt-H6
 ======
 
-Alt-H2
-------
+
 
 *asterisks* or _underscores_
 
