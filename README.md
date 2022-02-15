@@ -1,13 +1,7 @@
 # Digitální elektronika 1
 Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem
 
-# H1
-## H2
-### H3
-#### H4
-##### H5
-Alt-H6
-======
+### Ukázka nadpisu úrovně 3
 
 
 
