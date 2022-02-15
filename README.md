@@ -2,12 +2,12 @@
 
 ## Formátování textu
 Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem. Nadpis tohoto odstavce je úrovně **2**
-
 ```
- *asterisks* or _underscores_
+# Nadpis úrovně 1
+#### Nadpis úrovně 4
 
-**asterisks** or __underscores__
-
-**asterisks and _underscores_**
-~~Scratch this.~~
+*asterisks* nebo _underscores_                  kurzíva
+**asterisks** or __underscores__                tučné
+_underscores_**                                 tučné a kurzíva
+~~Scratch this.~~                               škrtlé
 ```
