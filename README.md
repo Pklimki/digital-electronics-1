@@ -1,8 +1,7 @@
 # Digitální elektronika 1
-Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem
 
-### Ukázka nadpisu úrovně 3
-
+## Formátování textu
+Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem. Nadpis tohoto odstavce je úrovně **2**
 
 
 *asterisks* or _underscores_
