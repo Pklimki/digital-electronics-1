@@ -4,7 +4,7 @@
 Úroveň nadpisu je vždy daná počtem hashtagů před nadpisem. Nadpis tohoto odstavce je úrovně **2**
 
 
-*asterisks* or _underscores_
+> *asterisks* or _underscores_
 
 **asterisks** or __underscores__
 
