@@ -1,4 +1,4 @@
-# Lab 1: Petr Klíma
+# Lab 1: Petr Klíma 3
 
 ### De Morgan's laws
 
