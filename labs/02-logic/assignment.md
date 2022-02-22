@@ -45,6 +45,12 @@
                 (s_B_equals_A  = '0') and
                 (s_B_less_A    = '1'))
         report "Input combination 0000, 0001 FAILED" severity error;
+        
+        s_b <= "1001"; s_a <= "0101"; wait for 100 ns;
+        assert ((s_B_greater_A = '1') and
+                (s_B_equals_A  = '0') and
+                (s_B_less_A    = '0'))
+        report "Input combination 1001, 0101 FAILED" severity error;
 
         -- Report a note at the end of stimulus process
         report "Stimulus process finished" severity note;
