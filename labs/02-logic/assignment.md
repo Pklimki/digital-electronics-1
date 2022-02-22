@@ -29,7 +29,7 @@
         report "Stimulus process started" severity note;
 
          -- First test case
-        s_b <= "1000"; 			-- Such as "1000" if ID = xxxx86
+        s_b <= "1000"; 			   -- Such as "1000" if ID = xxxx86
         s_a <= "0110";        	-- Such as "0110" if ID = xxxx86
         wait for 100 ns;
         -- Expected output
