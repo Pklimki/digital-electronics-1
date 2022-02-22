@@ -39,7 +39,6 @@
         -- If false, then report an error
         report "Input combination 1000, 0110 FAILED" severity error;
 
-
         s_b <= "0000"; s_a <= "0001"; wait for 100 ns;
         assert ((s_B_greater_A = '0') and
                 (s_B_equals_A  = '0') and
