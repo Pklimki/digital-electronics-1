@@ -54,7 +54,10 @@
 
 2. Text console screenshot during your simulation, including reports.
 
-   ![your figure]()
+   ![OK stav](images/NoError.png)
+   
+   ![Error](images/Error.png)
+
 
 3. Link to your public EDA Playground example:
 
