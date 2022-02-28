@@ -27,9 +27,10 @@
 
 <a name="led"></a>
 ## Zapojení LED
-
-
-
+![Led piny](images/Ledky.png)
+![Led vnitrne](images/Ledky_Zapojeni.png)
 
 <a name="switch"></a>
 ## Zapojení switchů
+![Switch piny](images/Switche.png)
+![Switch vnitrne](images/Switche_Zapojeni.png)
