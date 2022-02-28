@@ -22,7 +22,7 @@
  | LD14 | V12 | SW14 | U11 |
  | LD15 | V11 | SW15 | V10 |
  
-![Deska](images/Deska-2.png)
+![Deska](images/Deska-2.jpg)
 
 
 
