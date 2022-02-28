@@ -2,7 +2,7 @@
 
 1. [Zapojení LED](#led)
 2. [Zapojení switchů](#switch)
-
+![Deska](images/Deska-2.jpg)
  | **LED** | **PIN** | **SWITCH** | **PIN** | 
  | :-: | :-: | :-: | :-: |
  | LD0 | H17 | SW0 | J15 |
@@ -22,7 +22,7 @@
  | LD14 | V12 | SW14 | U11 |
  | LD15 | V11 | SW15 | V10 |
  
-![Deska](images/Deska-2.jpg)
+
 
 
 
