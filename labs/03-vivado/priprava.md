@@ -1,8 +1,8 @@
 # Priprava
+1. [Artix-7 Board](#board)
+2. [Zapojení LED](#led)
+3. [Zapojení switchů](#switch)
 
-1. [Zapojení LED](#led)
-2. [Zapojení switchů](#switch)
-![Deska](images/Deska-2.jpg)
  | **LED** | **PIN** | **SWITCH** | **PIN** | 
  | :-: | :-: | :-: | :-: |
  | LD0 | H17 | SW0 | J15 |
@@ -21,9 +21,11 @@
  | LD13 | V14 | SW13 | U12 |
  | LD14 | V12 | SW14 | U11 |
  | LD15 | V11 | SW15 | V10 |
- 
 
 
+<a name="board"></a>
+## Artix-7 Board
+![Deska](images/Deska-2.jpg)
 
 
 <a name="led"></a>
