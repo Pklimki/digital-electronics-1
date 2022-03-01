@@ -26,8 +26,6 @@ begin
     p_stimulus : process
     begin
         
-       
-
         s_d <= "010";
         s_c <= "011";
         s_b <= "001";
