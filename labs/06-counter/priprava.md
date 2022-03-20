@@ -1,13 +1,10 @@
 ## Preparation tasks (done before the lab at home)
 
-[Priprava](images/06-priprava)
+[Priprava](images/06-priprava.png)
 
 * Je-li tlačítko rozepnuté, generuje logický stav LOW
 * Je-li tlačítko sepnuté, generuje logický stav HIGH
 
-   &nbsp;
-   ![Clock period](images/freq.png)
-   &nbsp;
 
    | **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
    | :-: | :-: | :-: | :-: |
