@@ -1,16 +1,3 @@
-### Table of contents
-
-* [Preparation tasks](#preparation)
-* [Part 1: Synchronize Git and create a new folder](#part1)
-* [Part 2: VHDL code for clock enable](#part2)
-* [Part 3: VHDL code for bidirectional binary counter](#part3)
-* [Part 4: Top level VHDL code](#part4)
-* [Experiments on your own](#experiments)
-* [Lab assignment](#assignment)
-* [References](#references)
-
-<a name="preparation"></a>
-
 ## Preparation tasks (done before the lab at home)
 
 The Nexys A7 board provides five push buttons for user applications.
