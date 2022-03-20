@@ -1,6 +1,6 @@
 ## Preparation tasks (done before the lab at home)
 
-[Priprava](images/06-priprava.png)
+![Priprava](images/06-priprava.png)
 
 * Je-li tlačítko rozepnuté, generuje logický stav LOW
 * Je-li tlačítko sepnuté, generuje logický stav HIGH
