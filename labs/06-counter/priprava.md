@@ -5,6 +5,8 @@
 * Je-li tlačítko rozepnuté, generuje logický stav LOW
 * Je-li tlačítko sepnuté, generuje logický stav HIGH
 
+![image](images/T.png)
+
 
    | **Time interval** | **Number of clk periods** | **Number of clk periods in hex** | **Number of clk periods in binary** |
    | :-: | :-: | :-: | :-: |
