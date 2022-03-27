@@ -1,8 +1,7 @@
 ![Prubehy](images/priprava.png)
 
 
-
-
+```javascript
 {
   signal:
   [
@@ -29,3 +28,4 @@
     text: '                    4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms   4ms',
   },
 }
+```
