@@ -7,6 +7,10 @@ entity tlc is
     port(
         clk     : in  std_logic;
         reset   : in  std_logic;
+        
+        senzor_south   : in  std_logic;
+        senzor_west    : in  std_logic;
+        
         -- Traffic lights (RGB LEDs) for two directions
         south_o : out std_logic_vector(3 - 1 downto 0);
         west_o  : out std_logic_vector(3 - 1 downto 0)
@@ -25,6 +29,8 @@ architecture Behavioral of tlc is
                      STOP2,
                      SOUTH_GO,
                      SOUTH_WAIT);
+  
+    
     -- Define the signal that uses different states
     signal s_state : t_state;
 
@@ -35,14 +41,14 @@ architecture Behavioral of tlc is
     signal s_cnt : unsigned(4 downto 0);
 
     -- Specific values for local counter
-    constant c_DELAY_4SEC : unsigned(4 downto 0) := b"1_0000";
+    constant c_DELAY_4SEC : unsigned(4 downto 0) := b"1_1111";
     constant c_DELAY_2SEC : unsigned(4 downto 0) := b"0_1000";
     constant c_DELAY_1SEC : unsigned(4 downto 0) := b"0_0100";
     constant c_ZERO       : unsigned(4 downto 0) := b"0_0000";
 
     -- Output values
     constant c_RED        : std_logic_vector(2 downto 0) := b"100";
-    constant c_YELLOW     : std_logic_vector(2 downto 0) := b"110";
+    constant c_YELLOW     : std_logic_vector(2 downto 0) := b"011";
     constant c_GREEN      : std_logic_vector(2 downto 0) := b"010";
 
 begin
@@ -77,6 +83,11 @@ begin
             if (reset = '1') then   -- Synchronous reset
                 s_state <= STOP1;   -- Set initial state
                 s_cnt   <= c_ZERO;  -- Clear delay counter
+
+            
+            elseif (
+
+
 
             elsif (s_en = '1') then
                 -- Every 250 ms, CASE checks the value of the s_state 
