@@ -1,21 +1,77 @@
-# Lab 8: PETR KLÍMA
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
-### Traffic light controller
 
-1. Figure of traffic light controller state diagram. The image can be drawn on a computer or by hand. Always name all states, transitions, and input signals!
+entity tlc is
+    port(
+        clk     : in  std_logic;
+        reset   : in  std_logic;
+        -- Traffic lights (RGB LEDs) for two directions
+        south_o : out std_logic_vector(3 - 1 downto 0);
+        west_o  : out std_logic_vector(3 - 1 downto 0)
+    );
+end entity tlc;
 
-   ![State](State.png)
+------------------------------------------------------------
+-- Architecture declaration for traffic light controller
+------------------------------------------------------------
+architecture Behavioral of tlc is
 
-2. Listing of VHDL code of the completed process `p_traffic_fsm`. Always use syntax highlighting, meaningful comments, and follow VHDL guidelines:
+    -- Define the states
+    type t_state is (STOP1,
+                     WEST_GO,
+                     WEST_WAIT,
+                     STOP2,
+                     SOUTH_GO,
+                     SOUTH_WAIT);
+    -- Define the signal that uses different states
+    signal s_state : t_state;
 
-```vhdl
+    -- Internal clock enable
+    signal s_en : std_logic;
+
+    -- Local delay counter
+    signal s_cnt : unsigned(4 downto 0);
+
+    -- Specific values for local counter
+    constant c_DELAY_4SEC : unsigned(4 downto 0) := b"1_0000";
+    constant c_DELAY_2SEC : unsigned(4 downto 0) := b"0_1000";
+    constant c_DELAY_1SEC : unsigned(4 downto 0) := b"0_0100";
+    constant c_ZERO       : unsigned(4 downto 0) := b"0_0000";
+
+    -- Output values
+    constant c_RED        : std_logic_vector(2 downto 0) := b"100";
+    constant c_YELLOW     : std_logic_vector(2 downto 0) := b"110";
+    constant c_GREEN      : std_logic_vector(2 downto 0) := b"010";
+
+begin
+
+    --------------------------------------------------------
+    -- Instance (copy) of clock_enable entity generates 
+    -- an enable pulse every 250 ms (4 Hz). Remember that 
+    -- the frequency of the clock signal is 100 MHz.
+    
+    -- USE THIS PART FOR FASTER/SHORTER SIMULATION
+    --s_en <= '1';
+    -- USE THE FOLLOWING PART FOR THE IMPLEMENTATION
+    clk_en0 : entity work.clock_enable
+        generic map(
+            g_MAX => 25000000 -- 250 ms / (1/100 MHz)
+        )
+        port map(
+            clk   => clk,
+            reset => reset,
+            ce_o  => s_en
+        );
+
     --------------------------------------------------------
     -- p_traffic_fsm:
     -- The sequential process with synchronous reset and 
     -- clock_enable entirely controls the s_state signal by 
     -- CASE statement.
     --------------------------------------------------------
-p_traffic_fsm : process(clk)
+    p_traffic_fsm : process(clk)
     begin
         if rising_edge(clk) then
             if (reset = '1') then   -- Synchronous reset
@@ -94,15 +150,46 @@ p_traffic_fsm : process(clk)
                     -- It is a good programming practice to use the 
                     -- OTHERS clause, even if all CASE choices have 
                     -- been made.
-                    when others =>
+                      when others =>
                         s_state <= STOP1;
                         s_cnt   <= c_ZERO;
                 end case;
             end if; -- Synchronous reset
         end if; -- Rising edge
     end process p_traffic_fsm;
-```
 
-3. Screenshot with simulated time waveforms. The full functionality of the entity must be verified. Always display all inputs and outputs (display the inputs at the top of the image, the outputs below them) at the appropriate time scale!
+    --------------------------------------------------------
+    -- p_output_fsm:
+    -- The combinatorial process is sensitive to state
+    -- changes and sets the output signals accordingly.
+    -- This is an example of a Moore state machine and
+    -- therefore the output is set based on the active state.
+    --------------------------------------------------------
+    p_output_fsm : process(s_state)
+    begin
+        case s_state is
+            when STOP1 =>
+                south_o <= c_RED;
+                west_o  <= c_RED;
+            when WEST_GO =>
+                south_o <= c_RED;
+                west_o  <= c_GREEN;
+            when WEST_WAIT =>
+                south_o <= c_RED;
+                west_o  <= c_YELLOW;
+            when STOP2 =>
+                south_o <= c_RED;
+                west_o  <= c_RED;
+            when SOUTH_GO =>
+                south_o <= c_GREEN;
+                west_o  <= c_RED;
+            when SOUTH_WAIT =>
+                south_o <= c_YELLOW;
+                west_o  <= c_RED;
+            when others =>
+                south_o <= c_RED;
+                west_o  <= c_RED;
+        end case;
+    end process p_output_fsm;
 
-   ![Prubeh](images/Prubeh.png)
+end architecture Behavioral;
