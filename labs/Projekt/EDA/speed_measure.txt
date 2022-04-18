@@ -1,0 +1,86 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
+
+
+entity speed_measure is
+	 generic(
+        DELKA_USEKU : real := 20.0 -- Number of bits for counter
+    );
+
+    port(
+    	-- hodinovy signal z desky
+        clk         : in  std_logic;
+        -- vystupni signaly ze senzoru
+        start    : in  std_logic;
+        stop     : in  std_logic;
+        reset    : in  std_logic;
+        -- Vystupni promenna
+        v_o	     : integer := 0
+    
+    );
+end speed_measure;
+
+architecture Behavioral of speed_measure is
+
+    -- Cas straveny v useku
+    -- zaciname na 1, abychom neprisli o prvni inkrementaci na nabezne hrane clk
+    signal s_cnt        : natural := 1; 
+    
+   
+    -- Stav mereni
+    signal s_merime     : std_logic := '0';
+    
+    -- Rychlost
+    signal s_v			: real	:= 0.0;
+    signal s_vi         : integer := 0;
+   
+   	-- promena pro reset
+    signal s_reset      : std_logic := '0';
+
+	--signal RYCHLOST    : unsigned(15 downto 0);
+    
+    -- konstanta pro prevod z cm/T_clocku na m/s
+   	--constant c_v_met_p_sec : real := Real(c_freq_clk)/100.0;
+
+
+begin
+
+    p_measure : process(clk)
+    begin
+    
+        if rising_edge(clk) then
+        
+        	-- Reset
+        	if (reset = '1') then
+        		s_merime <= '0';
+                s_cnt <= 0;
+            else
+        
+        	  -- Start mereni
+              if (start = '1') then
+                  if (s_merime = '0') then
+                      s_merime <= '1';
+                      s_cnt <= 1;
+                  end if;
+              end if;
+
+		  	  -- Konec mereni
+              if (stop = '1') then
+                  if (s_merime = '1') then
+                      s_merime <= '0';
+                      -- rychlost v m/s
+                      s_v <= ((DELKA_USEKU) / Real(s_cnt))*1000000.0;
+                      s_vi <= integer(s_v * 1000.0);
+
+                  end if;
+              end if;
+
+              if (s_merime = '1') then
+                  s_cnt <= s_cnt + 1;
+              end if;
+          end if;
+      end if;
+      end process p_measure;
+    
+end architecture Behavioral;

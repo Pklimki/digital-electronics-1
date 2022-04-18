@@ -1,0 +1,70 @@
+library IEEE;
+use IEEE.STD_LOGIC_1164.ALL;
+use ieee.numeric_std.all;
+
+
+entity top is
+    Port ( 
+    CLK100MHZ : in STD_LOGIC;
+    SENZOR1   : in STD_LOGIC;
+    SENZOR2   : in STD_LOGIC;
+    SENZOR3   : in STD_LOGIC;
+    BTNC      : in STD_LOGIC);
+end top;
+
+architecture Behavioral of top is
+
+  -- Interni signaly pro rychlost
+  signal s_v1  : std_logic;
+  signal s_v2  : std_logic;
+  signal s_v3  : std_logic;
+  signal s_v  : std_logic;
+
+begin
+
+  --------------------------------------------------------------------
+  speed_measure_section_1 : entity speed_measure
+      generic map(
+          DELKA_USEKU => 20
+      )
+      port map(
+      	  -- Priradim porty me krabicky k fyzickym signalum
+          clk   => CLK100MHZ,
+          start => SENZOR1,
+          stop => SENZOR2,
+          reset  => '0',
+          -- Vystupni promenna
+          v_o	 => s_v1
+      );
+
+  --------------------------------------------------------------------
+  speed_measure_section_2 : entity speed_measure
+      generic map(
+          DELKA_USEKU => 15
+      )
+      port map(
+      	  -- Priradim porty me krabicky k fyzickym signalum
+          clk   => CLK100MHZ,
+          start => SENZOR2,
+          stop => SENZOR3,
+          reset  => SENZOR1,
+          -- Vystupni promenna
+          v_o	 => s_v2
+      );
+  --------------------------------------------------------------------
+  speed_measure_section_2 : entity speed_measure
+      generic map(
+          DELKA_USEKU => 30
+      )
+      port map(
+      	  -- Priradim porty me krabicky k fyzickym signalum
+          clk   => CLK100MHZ,
+          start => SENZOR3,
+          stop => SENZOR4,
+          reset  => SENZOR2,
+          -- Vystupni promenna
+          v_o	 => s_v3
+      );
+  --------------------------------------------------------------------
+
+end architecture Behavioral;
