@@ -15,14 +15,14 @@ use ieee.std_logic_1164.all;
 ------------------------------------------------------------
 -- Entity declaration for testbench
 ------------------------------------------------------------
-entity tb_get_speed is
+entity tb_speed_measure_top is
     -- Entity of testbench is always empty
-end entity tb_get_speed;
+end entity tb_speed_measure_top;
 
 ------------------------------------------------------------
 -- Architecture body for testbench
 ------------------------------------------------------------
-architecture testbench of tb_get_speed is
+architecture testbench of tb_speed_measure_top is
 
     -- Local constants
     constant c_CLK_100MHZ_PERIOD : time := 10 ns;
@@ -37,7 +37,7 @@ architecture testbench of tb_get_speed is
     signal s_senzor4 : std_logic;
     signal s_switch1 : std_logic;
     signal s_switch2 : std_logic;
-    signal s_v_o     : real;
+    --signal s_v_o     : real;
 
 
 begin
@@ -45,7 +45,7 @@ begin
     -- entity (Unit Under Test)
     -- MAP I/O PORTS FROM ENTITY TO LOCAL SIGNALS
     -- uut_driver_7seg_4digits : entity work....
-    uut_speed_measure_top : entity work.get_speed
+    uut_speed_measure_top : entity work.speed_measure_top
         port map(
             clk         => s_clk_100MHz,
             reset       => s_reset,
@@ -54,8 +54,8 @@ begin
             SENZOR3     => s_senzor3,
             SENZOR4     => s_senzor4,
 			switch1     => s_switch1,
-			switch2     => s_switch2,
-            v_to_print_o   => s_v_o
+			switch2     => s_switch2
+            --v_print_o   => s_v_o
         );
 
     -- Connecting testbench signals with clock_enable entity

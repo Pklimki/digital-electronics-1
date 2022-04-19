@@ -15,14 +15,14 @@ use ieee.std_logic_1164.all;
 ------------------------------------------------------------
 -- Entity declaration for testbench
 ------------------------------------------------------------
-entity tb_get_speed is
+entity tb_speed_measure_top is
     -- Entity of testbench is always empty
-end entity tb_get_speed;
+end entity tb_speed_measure_top;
 
 ------------------------------------------------------------
 -- Architecture body for testbench
 ------------------------------------------------------------
-architecture testbench of tb_get_speed is
+architecture testbench of tb_speed_measure_top is
 
     -- Local constants
     constant c_CLK_100MHZ_PERIOD : time := 10 ns;
@@ -35,8 +35,7 @@ architecture testbench of tb_get_speed is
     signal s_senzor2 : std_logic;
     signal s_senzor3 : std_logic;
     signal s_senzor4 : std_logic;
-    signal s_switch1 : std_logic;
-    signal s_switch2 : std_logic;
+    signal s_switch  : std_logic_vector(1 downto 0);
     signal s_v_o     : real;
 
 
@@ -45,7 +44,7 @@ begin
     -- entity (Unit Under Test)
     -- MAP I/O PORTS FROM ENTITY TO LOCAL SIGNALS
     -- uut_driver_7seg_4digits : entity work....
-    uut_speed_measure_top : entity work.get_speed
+    uut_speed_measure_top : entity work.speed_measure_top
         port map(
             clk         => s_clk_100MHz,
             reset       => s_reset,
@@ -53,9 +52,8 @@ begin
             SENZOR2     => s_senzor2,
             SENZOR3     => s_senzor3,
             SENZOR4     => s_senzor4,
-			switch1     => s_switch1,
-			switch2     => s_switch2,
-            v_to_print_o   => s_v_o
+			switch      => s_switch,
+            v_print_o   => s_v_o
         );
 
     -- Connecting testbench signals with clock_enable entity
@@ -67,7 +65,7 @@ begin
     --------------------------------------------------------
     p_clk_gen : process
     begin
-        while now < 200 ms loop -- 75 periods of 100MHz clock
+        while now < 7500 ns loop -- 75 periods of 100MHz clock
             s_clk_100MHz <= '0';
             wait for c_CLK_100MHZ_PERIOD / 2;
             s_clk_100MHz <= '1';
@@ -75,85 +73,73 @@ begin
         end loop;
         wait;
     end process p_clk_gen;
-    
-    p_switch_gen : process
-    begin
-        while now < 200 ms loop -- 75 periods of 100MHz clock
-            s_switch1  <= '1';
-            s_switch2  <= '0';
-            wait for 25 ms;
-            s_switch1  <= '0';
-            s_switch2  <= '1';
-            wait for 25 ms;
-            s_switch1  <= '1';
-            s_switch2  <= '1';
-            wait for 25 ms;
-            s_switch1  <= '0';
-            s_switch2  <= '0';
-            wait for 25 ms;
-           
-        end loop;
-        wait;
-    end process p_switch_gen;
 
     --------------------------------------------------------
     -- Data generation process
     --------------------------------------------------------
   p_stimulus : process
   begin
-        
+        s_switch  <= "00";
 		s_senzor1 <= '0';
 		s_senzor2 <= '0';
 		s_senzor3 <= '0';
 		s_senzor4 <= '0';
-		
-		
 		wait for 50 ns;
+		
 		s_senzor1 <= '1';
-		wait for 10 ns;
+		wait for 150 ns;
 		s_senzor1 <= '0';
 		
-		wait for 10 ms;
+		wait for 65 ns;
 		s_senzor2 <= '1';
-		wait for 20 ns;
+		wait for 190 ns;
+		s_senzor2 <= '0';
+		wait for 35 ns;
+		s_senzor3 <= '1';
+		wait for 56 ns;
+		s_senzor3 <= '0';
+		wait for 250 ns;
+		s_senzor4 <= '1';
+		wait for 120 ns;
+		s_senzor4 <= '0';
+		wait for 50 ns;
+		s_switch  <= "01";
+		wait for 50 ns;
+		s_switch  <= "10";
+		wait for 50 ns;
+		s_switch  <= "11";
+		wait for 50 ns;
+		s_switch  <= "00";
+		
+		wait for 250 ns;
+		s_senzor1 <= '1';
+		wait for 75 ns;
+		s_senzor1 <= '0';
+		
+		wait for 65 ns;
+		s_senzor2 <= '1';
+		wait for 160 ns;
 		s_senzor2 <= '0';
 		
-		
-		wait for 15 ms;
+		wait for 35 ns;
 		s_senzor3 <= '1';
-		wait for 15 ns;
+		wait for 56 ns;
 		s_senzor3 <= '0';
+		wait for 120 ns;
 		
-		
-		wait for 20 ms;
 		s_senzor4 <= '1';
-		wait for 10 ns;
+		wait for 120 ns;
 		s_senzor4 <= '0';
-		
---		wait for 250 ns;
---		s_senzor1 <= '1';
---		wait for 75 ns;
---		s_senzor1 <= '0';
-		
---		wait for 65 ns;
---		s_senzor2 <= '1';
---		wait for 160 ns;
---		s_senzor2 <= '0';
-		
---		wait for 35 ns;
---		s_senzor3 <= '1';
---		wait for 56 ns;
---		s_senzor3 <= '0';
---		wait for 120 ns;
-		
---		s_senzor4 <= '1';
---		wait for 120 ns;
---		s_senzor4 <= '0';
---		wait for 50 ns;
+		wait for 50 ns;
+		s_switch  <= "01";
+		wait for 50 ns;
+		s_switch  <= "10";
+		wait for 50 ns;
+		s_switch  <= "11";
+		wait for 50 ns;
+		s_switch  <= "00";
 		
         wait;
     end process p_stimulus;
 
 end architecture testbench;
-
-    
