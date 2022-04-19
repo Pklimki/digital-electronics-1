@@ -18,7 +18,7 @@ architecture Behavioral of top is
   signal s_v1  : std_logic;
   signal s_v2  : std_logic;
   signal s_v3  : std_logic;
-  signal s_v  : std_logic;
+  signal s_v   : std_logic;
 
 begin
 
@@ -30,8 +30,8 @@ begin
       port map(
       	  -- Priradim porty me krabicky k fyzickym signalum
           clk   => CLK100MHZ,
-          start => SENZOR1,
-          stop => SENZOR2,
+          en_i => SENZOR1,
+          dis_i => SENZOR2,
           reset  => '0',
           -- Vystupni promenna
           v_o	 => s_v1
@@ -45,8 +45,8 @@ begin
       port map(
       	  -- Priradim porty me krabicky k fyzickym signalum
           clk   => CLK100MHZ,
-          start => SENZOR2,
-          stop => SENZOR3,
+          en_i => SENZOR2,
+          dis_i => SENZOR3,
           reset  => SENZOR1,
           -- Vystupni promenna
           v_o	 => s_v2
@@ -59,11 +59,25 @@ begin
       port map(
       	  -- Priradim porty me krabicky k fyzickym signalum
           clk   => CLK100MHZ,
-          start => SENZOR3,
-          stop => SENZOR4,
+          en_i => SENZOR3,
+          dis_i => SENZOR4,
           reset  => SENZOR2,
           -- Vystupni promenna
           v_o	 => s_v3
+      );
+  --------------------------------------------------------------------
+  speed_measure_avg : entity speed_measure
+      generic map(
+          DELKA_USEKU => 20+15+30
+      )
+      port map(
+      	  -- Priradim porty me krabicky k fyzickym signalum
+          clk   => CLK100MHZ,
+          en_i => SENZOR1,
+          dis_i => SENZOR4,
+          reset  => '0',
+          -- Vystupni promenna
+          v_o	 => s_v
       );
   --------------------------------------------------------------------
 
