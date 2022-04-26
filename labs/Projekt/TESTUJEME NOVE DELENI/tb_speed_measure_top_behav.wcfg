@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_speed_measure_top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="tb_speed_measure_top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="461309fs"></ZoomStartTime>
+      <ZoomEndTime time="1144810fs"></ZoomEndTime>
+      <Cursor1Time time="295416fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="158"></NameColumnWidth>
+      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="13" />
+   <wvobject fp_name="/tb_speed_measure_top/s_clk_100MHz" type="logic">
+      <obj_property name="ElementShortName">s_clk_100MHz</obj_property>
+      <obj_property name="ObjectShortName">s_clk_100MHz</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_reset" type="logic">
+      <obj_property name="ElementShortName">s_reset</obj_property>
+      <obj_property name="ObjectShortName">s_reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_senzor1" type="logic">
+      <obj_property name="ElementShortName">s_senzor1</obj_property>
+      <obj_property name="ObjectShortName">s_senzor1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_senzor2" type="logic">
+      <obj_property name="ElementShortName">s_senzor2</obj_property>
+      <obj_property name="ObjectShortName">s_senzor2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_senzor3" type="logic">
+      <obj_property name="ElementShortName">s_senzor3</obj_property>
+      <obj_property name="ObjectShortName">s_senzor3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_senzor4" type="logic">
+      <obj_property name="ElementShortName">s_senzor4</obj_property>
+      <obj_property name="ObjectShortName">s_senzor4</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_switch1" type="logic">
+      <obj_property name="ElementShortName">s_switch1</obj_property>
+      <obj_property name="ObjectShortName">s_switch1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_switch2" type="logic">
+      <obj_property name="ElementShortName">s_switch2</obj_property>
+      <obj_property name="ObjectShortName">s_switch2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/s_v_o" type="other">
+      <obj_property name="ElementShortName">s_v_o</obj_property>
+      <obj_property name="ObjectShortName">s_v_o</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/uut_speed_measure_top/s_v1" type="other">
+      <obj_property name="ElementShortName">s_v1</obj_property>
+      <obj_property name="ObjectShortName">s_v1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/uut_speed_measure_top/s_v2" type="other">
+      <obj_property name="ElementShortName">s_v2</obj_property>
+      <obj_property name="ObjectShortName">s_v2</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/uut_speed_measure_top/s_v3" type="other">
+      <obj_property name="ElementShortName">s_v3</obj_property>
+      <obj_property name="ObjectShortName">s_v3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_speed_measure_top/uut_speed_measure_top/s_v" type="other">
+      <obj_property name="ElementShortName">s_v</obj_property>
+      <obj_property name="ObjectShortName">s_v</obj_property>
+   </wvobject>
+</wave_config>
